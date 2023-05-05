@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-22fb" database="Sqlite" >
+	<schema name="Default" >
+		<table name="curriculo" spec="" >
+			<column name="cod_pessoa" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_completo" type="TEXT" jt="-1" mandatory="y" />
+			<column name="cargo" type="TEXT" jt="-1" />
+			<column name="email" type="TEXT" jt="-1" />
+			<column name="telefone" type="INTEGER" jt="4" />
+			<column name="cod_experiencia" type="INTEGER" jt="4" />
+			<column name="cod_formacao" type="INTEGER" jt="4" />
+			<column name="cod_endereco" type="INTEGER" jt="4" />
+			<column name="cod_realizacoes" type="INTEGER" jt="4" />
+			<column name="habilidade_1" type="TEXT" jt="-1" />
+			<column name="habilidade_2" type="TEXT" jt="-1" />
+			<column name="personalidade" type="TEXT" jt="-1" />
+			<index name="pk_curriculo" unique="PRIMARY_KEY" >
+				<column name="cod_pessoa" options=" AUTOINCREMENT" />
+			</index>
+			<fk name="fk_experiencia" to_schema="Default" to_table="experiencia" >
+				<fk_column name="cod_experiencia" pk="cod_experiencia" />
+			</fk>
+			<fk name="fk_formacao" to_schema="Default" to_table="formacao" >
+				<fk_column name="cod_formacao" pk="cod_formacao" />
+			</fk>
+			<fk name="fk_endereco" to_schema="Default" to_table="endereco" >
+				<fk_column name="cod_endereco" pk="cod_endereco" />
+			</fk>
+			<fk name="fk_realizacoes" to_schema="Default" to_table="realizacoes" >
+				<fk_column name="cod_realizacoes" pk="cod_realizacoes" />
+			</fk>
+		</table>
+		<table name="endereco" spec="" >
+			<column name="cod_endereco" type="INTEGER" jt="4" mandatory="y" />
+			<column name="rua" type="TEXT" jt="-1" />
+			<column name="avenida" type="TEXT" jt="-1" />
+			<column name="cidade" type="TEXT" jt="-1" />
+			<column name="numero" type="INTEGER" jt="4" />
+			<column name="referencia" type="TEXT" jt="-1" />
+			<index name="pk_endereco" unique="PRIMARY_KEY" >
+				<column name="cod_endereco" options=" AUTOINCREMENT" />
+			</index>
+		</table>
+		<table name="experiencia" spec="" >
+			<column name="cod_experiencia" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_exp" type="TEXT" jt="-1" mandatory="y" />
+			<column name="ano_inicio" type="INTEGER" jt="4" mandatory="y" />
+			<column name="ano_fim" type="INTEGER" jt="4" mandatory="y" />
+			<column name="cargo_exp" type="TEXT" jt="-1" />
+			<index name="pk_experiencia" unique="PRIMARY_KEY" >
+				<column name="cod_experiencia" options=" AUTOINCREMENT" />
+			</index>
+		</table>
+		<table name="formacao" spec="" >
+			<column name="cod_formacao" type="INTEGER" jt="4" mandatory="y" />
+			<column name="nome_curso" type="TEXT" jt="-1" />
+			<column name="ano_inicio" type="INTEGER" jt="4" mandatory="y" />
+			<column name="ano_fim" type="INTEGER" jt="4" mandatory="y" />
+			<column name="instituicao" type="TEXT" jt="-1" />
+			<column name="diploma" type="TEXT" jt="-1" />
+			<index name="pk_formacao" unique="PRIMARY_KEY" >
+				<column name="cod_formacao" options=" AUTOINCREMENT" />
+			</index>
+		</table>
+		<table name="realizacoes" spec="" >
+			<column name="cod_realizacoes" type="INTEGER" jt="4" mandatory="y" />
+			<column name="ano" type="INTEGER" jt="4" mandatory="y" />
+			<column name="realizacao" type="INTEGER" jt="4" />
+			<index name="pk_realizacoes" unique="PRIMARY_KEY" >
+				<column name="cod_realizacoes" options=" AUTOINCREMENT" />
+			</index>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.40.0.0.jar" driver_desc="Standard" host="localhost" port="7210" instance="C:/Users/Guilherme/Documents/GitHub/Tutorial_M2/SEMANA_02/02_TUTORIAL/projeto.db" useSystemProxy="false" />
+	<layout name="Main Layout" id="Layout-d45" show_relation="columns" >
+		<entity schema="Default" name="curriculo" color="BED3F4" x="272" y="80" />
+		<entity schema="Default" name="endereco" color="BED3F4" x="496" y="80" />
+		<entity schema="Default" name="experiencia" color="BED3F4" x="496" y="416" />
+		<entity schema="Default" name="formacao" color="BED3F4" x="272" y="416" />
+		<entity schema="Default" name="realizacoes" color="BED3F4" x="48" y="416" />
+		<group name="curriculo" color="ECF0F7" >
+			<entity schema="Default" name="endereco" />
+			<entity schema="Default" name="experiencia" />
+			<entity schema="Default" name="formacao" />
+			<entity schema="Default" name="realizacoes" />
+			<entity schema="Default" name="curriculo" />
+		</group>
+	</layout>
+	<layout name="~Layout with Sample Tools" id="Layout-193d" show_column_type="y" show_relation="columns" >
+		<entity schema="Default" name="curriculo" color="BED3F4" x="320" y="48" />
+		<entity schema="Default" name="endereco" color="BED3F4" x="592" y="48" />
+		<entity schema="Default" name="experiencia" color="BED3F4" x="592" y="384" />
+		<entity schema="Default" name="formacao" color="BED3F4" x="320" y="384" />
+		<entity schema="Default" name="realizacoes" color="BED3F4" x="48" y="384" />
+		<script name="SQL Editor" id="Editor-2091" language="SQL" >
+			<string><![CDATA[SELECT
+	cod_pessoa, nome_completo, cargo, email, telefone, cod_experiencia, cod_formacao, cod_endereco, cod_realizacoes, 
+	habilidade_1, habilidade_2, personalidade
+FROM
+	curriculo o;]]></string>
+		</script>
+		<browser id="Browse-1c44" name="Relational Data Explorer" confirm_updates="y" >
+			<browse_table schema="Default" entity="curriculo" x="20" y="20" width="400" height="300" />
+		</browser>
+		<query id="Query-15c" name="Query Builder" >
+			<query_table schema="Default" name="curriculo" alias="c" x="48" y="48" >
+				<column name="cod_pessoa" />
+				<column name="nome_completo" />
+				<column name="cargo" />
+				<column name="email" />
+				<column name="telefone" />
+				<column name="cod_experiencia" />
+				<column name="cod_formacao" />
+				<column name="cod_endereco" />
+				<column name="cod_realizacoes" />
+				<column name="habilidade_1" />
+				<column name="habilidade_2" />
+				<column name="personalidade" />
+			</query_table>
+		</query>
+		<form name="Report" id="Report-1e74" template="Page" css="container-fluid" view="frame" >
+			<var name="samplePageNumber" type="4" value="0" mandatory="n" />
+			<var name="sampleRecordsPerPage" type="4" value="100" mandatory="n" />
+			<body name="Body" template="Grid" pos="0,0,0,0,f,f" layout="{{-2,-2,-2,-2,-1},{-2,-2,-2,-2}}" scroll="n" html="n" >
+				<cell type="label" name="Curriculo Data" template="H3" pos="0,0,1,0,l,c" />
+				<cell type="chart" name="Pie" template="Pie" pos="0,1,4,1,l,c" max_records="20" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="cod_pessoa" type="4" />
+						<var name="nome_completo" type="-1" />
+						<var name="cargo" type="-1" />
+						<var name="email" type="-1" />
+						<var name="telefone" type="4" />
+						<var name="cod_experiencia" type="4" />
+						<var name="cod_formacao" type="4" />
+						<var name="cod_endereco" type="4" />
+						<var name="cod_realizacoes" type="4" />
+						<var name="habilidade_1" type="-1" />
+						<var name="habilidade_2" type="-1" />
+						<var name="personalidade" type="-1" />
+						<script ><![CDATA[SELECT * FROM curriculo]]></script>
+					</form_script>
+					<param name="i0" value="nome_completo" />
+					<param name="width" value="100%" />
+					<param name="v0" value="cod_pessoa" />
+					<param name="title" value="Sample Chart" />
+					<param name="height" value="400px" />
+				</cell>
+				<tableview name="sample" template="Table" css="table table-striped table-sm table-hover" pos="0,2,4,2,f,f" layout="{{-2,-2,-2,-2,-2,-2,-2},{-2,-2}}" scroll="n" html="n" header_rows="1" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="cod_pessoa" type="4" />
+						<var name="nome_completo" type="-1" />
+						<var name="cargo" type="-1" />
+						<var name="email" type="-1" />
+						<var name="telefone" type="4" />
+						<var name="cod_experiencia" type="4" />
+						<var name="cod_formacao" type="4" />
+						<var name="cod_endereco" type="4" />
+						<var name="cod_realizacoes" type="4" />
+						<var name="habilidade_1" type="-1" />
+						<var name="habilidade_2" type="-1" />
+						<var name="personalidade" type="-1" />
+						<script ><![CDATA[SELECT * FROM curriculo]]></script>
+					</form_script>
+					<cell type="label" name="cod_pessoa" pos="0,0,0,0,c,c" />
+					<cell type="label" name="nome_completo" pos="1,0,1,0,c,c" />
+					<cell type="label" name="cargo" pos="2,0,2,0,c,c" />
+					<cell type="label" name="email" pos="3,0,3,0,c,c" />
+					<cell type="label" name="telefone" pos="4,0,4,0,c,c" />
+					<cell type="label" name="cod_experiencia" pos="5,0,5,0,c,c" />
+					<cell type="label" name="Button can open other pages." pos="6,0,6,0,c,c" />
+					<cell type="label" name="${cod_pessoa}" template="Plain" pos="0,1,0,1,l,c" />
+					<cell type="label" name="${nome_completo}" template="Plain" pos="1,1,1,1,l,c" />
+					<cell type="label" name="${cargo}" template="Plain" pos="2,1,2,1,l,c" />
+					<cell type="label" name="${email}" template="Plain" pos="3,1,3,1,l,c" />
+					<cell type="label" name="${telefone}" template="Plain" pos="4,1,4,1,l,c" />
+					<cell type="label" name="${cod_experiencia}" template="Plain" pos="5,1,5,1,l,c" />
+					<cell type="button" name="More" template="Plain" css="btn btn-sm btn-secondary" pos="6,1,6,1,c,c" ref_id="Report-1e74" />
+				</tableview>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="0,3,0,3,l,c" glyph="bi-chevron_double_left" ref_id="Report-1e74" >
+					<var name="samplePageNumber" value="0" />
+				</cell>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="1,3,1,3,l,c" glyph="bi-chevron_left" ref_id="Report-1e74" >
+					<var name="samplePageNumber" value="${Math.max(0,samplePageNumber-1)}" />
+				</cell>
+				<cell type="label" name="Page ${samplePageNumber+1}" pos="2,3,2,3,l,c" />
+				<cell type="href" name="" disabled="${!sampleHasNextPage}" pos="3,3,3,3,l,c" glyph="bi-chevron_right" ref_id="Report-1e74" >
+					<var name="samplePageNumber" value="${( samplePageNumber+1 )}" />
+				</cell>
+			</body>
+		</form>
+	</layout>
+</project>

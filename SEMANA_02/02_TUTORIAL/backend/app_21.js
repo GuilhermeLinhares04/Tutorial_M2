@@ -11,7 +11,7 @@ app.use(express.json());
 /* Definição dos endpoints */
 
 // Retorna todos registros de usuários
-app.get('/usuarios', (req, res) => {
+app.get('/', (req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
